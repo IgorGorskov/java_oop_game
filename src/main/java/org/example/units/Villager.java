@@ -10,4 +10,8 @@ public class Villager extends BaseHero{
     public float jerk(){
         return 0;
     }
+    @Override
+    public String getInfo() {
+        return "Villager";
+    }
 }

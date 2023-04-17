@@ -16,6 +16,9 @@ package org.example.units;
             return 0;
         }
         public void reload(){}
-
+        @Override
+        public String getInfo() {
+            return "Crossbowman";
+        }
 
     }

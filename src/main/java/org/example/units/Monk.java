@@ -12,4 +12,8 @@ public class Monk extends BaseHero {
     public float castHeal(){
         return 0;
     }
+    @Override
+    public String getInfo() {
+        return "Monk";
+    }
 }

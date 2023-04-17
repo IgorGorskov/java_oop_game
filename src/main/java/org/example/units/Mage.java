@@ -11,4 +11,9 @@ public class Mage extends BaseHero{
     public float castHeal(){
         return 0;
     }
+
+    @Override
+    public String getInfo() {
+        return "Mage";
+    }
 }

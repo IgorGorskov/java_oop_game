@@ -8,4 +8,8 @@ public class Lancer extends BaseHero {
     public float jerk(){
         return 0;
     }
+    @Override
+    public String getInfo() {
+        return "Lancer";
+    }
 }

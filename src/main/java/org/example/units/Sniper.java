@@ -17,4 +17,8 @@ public class Sniper extends BaseHero {
     public float long_shoot(){
         return 0;
     }
+    @Override
+    public String getInfo() {
+        return "Sniper";
+    }
 }

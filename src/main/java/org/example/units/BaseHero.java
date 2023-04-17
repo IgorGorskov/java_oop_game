@@ -1,6 +1,8 @@
 package org.example.units;
 
-public abstract class BaseHero {
+import org.example.IntrefaceGame;
+
+public abstract class BaseHero implements IntrefaceGame {
     float hp,maxHp;
     String name;
     int x, y;
@@ -30,6 +32,11 @@ public abstract class BaseHero {
         return 0;
     }
 
+    @Override
+    public String getInfo() {
+        return "";
+    }
 
-
+    @Override
+    public void step() {};
 }

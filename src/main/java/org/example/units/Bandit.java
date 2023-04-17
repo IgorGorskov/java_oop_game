@@ -10,4 +10,8 @@ public class Bandit extends BaseHero {
     public float dash(){
         return 0;
     }
+    @Override
+    public String getInfo() {
+        return "Bandit";
+    }
 }
