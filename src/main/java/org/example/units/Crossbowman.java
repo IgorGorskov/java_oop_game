@@ -1,13 +1,14 @@
 package org.example.units;
 
-    public class Crossbowman extends BaseHero {
+    public class Crossbowman extends Shooter {
         int arrows;
         int accuracy;
 
         public Crossbowman(String name) {
-            super(8, name, 1, 6, 14, 3, new int[]{6, 12}, 3);
-            arrows = 6;
-            accuracy = 65;
+            super(8, name, new Position(0,0), 14, 3, new int[]{6, 12},6,65);
+        }
+        public Crossbowman(String name,Position position) {
+            super(8, name, position, 14, 3, new int[]{6, 12},6,65);
         }
         public float shoot(){
             return 0;

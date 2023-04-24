@@ -11,45 +11,44 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<BaseHero> heroes= new ArrayList<>();
-        heroes.add(new Bandit("Dismas"));
-        heroes.add(new Sniper("Legolas"));
-        heroes.add(new Crossbowman("Van Helsing"));
-        heroes.add(new Lancer("Leonid"));
-        heroes.add(new Mage("Merlin"));
-        heroes.add(new Monk("Rasputin"));
-        heroes.add(new Villager("Bilbo"));
-        heroes.add(new Villager("Hunchback"));
-
+        ArrayList<BaseHero> firstTeamHeros = creatListHeros(0);
+        firstTeamHeros.forEach(hero -> System.out.println(hero.getName() + hero.getPosition()));
+        System.out.println();
+        ArrayList<BaseHero> secondTeamHeros = creatListHeros(10);
+        secondTeamHeros.forEach(hero -> System.out.println(hero.getName() + hero.getPosition()));
+    }
+    public static ArrayList<BaseHero> creatListHeros(int x){
         ArrayList<BaseHero> randomHeroes= new ArrayList<>();
         for (int i = 0; i < 11; i++) {
             String name = names.values()[new Random().nextInt(names.values().length)].toString();
+            Position position = new Position(x,i);
             switch (new Random().nextInt(7)){
                 case 0:
-                    randomHeroes.add(new Bandit(name));
+                    randomHeroes.add(new Bandit(name,position));
                     break;
                 case 1:
-                    randomHeroes.add(new Sniper(name));
+                    randomHeroes.add(new Sniper(name,position));
                     break;
                 case 2:
-                    randomHeroes.add(new Crossbowman(name));
+                    randomHeroes.add(new Crossbowman(name,position));
                     break;
                 case 3:
-                    randomHeroes.add(new Lancer(name));
+                    randomHeroes.add(new Lancer(name,position));
                     break;
                 case 4:
-                    randomHeroes.add(new Mage(name));
+                    randomHeroes.add(new Mage(name,position));
                     break;
                 case 5:
-                    randomHeroes.add(new Monk(name));
+                    randomHeroes.add(new Monk(name,position));
                     break;
                 case 6:
-                    randomHeroes.add(new Villager(name));
+                    randomHeroes.add(new Villager(name,position));
                     break;
             }
         }
-        for (BaseHero hero:randomHeroes) {
-            System.out.println(hero.getInfo());
-        }
+//        for (BaseHero hero:randomHeroes) {
+//            System.out.println(hero.getInfo());
+//        }
+    return randomHeroes;
     }
 }

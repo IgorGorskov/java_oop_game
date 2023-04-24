@@ -2,14 +2,14 @@ package org.example.units;
 
 import java.util.Arrays;
 
-public class Sniper extends BaseHero {
-    int arrows;
-    int accuracy;
+public class Sniper extends Shooter {
+
 
     public Sniper(String name) {
-        super(7, name, 1, 6, 12, 2, new int[]{6, 12}, 5);
-        arrows = 10;
-        accuracy = 70;
+        super(7, name, new Position(0,0), 12, 2, new int[]{6, 12},10,70);
+    }
+    public Sniper(String name, Position position) {
+        super(7, name, position, 12, 2, new int[]{6, 12},10,70);
     }
     public float shoot(){
         return 0;
