@@ -13,7 +13,9 @@ public abstract class BaseHero implements IntrefaceGame {
     int atk;
     int def;
     int[] damage;
-    public BaseHero(float hp, String name, Position position, int atk, int def, int[] damage) {
+    int initiative;
+    String state;
+    public BaseHero(float hp, String name,String state, Position position, int atk, int def,int initiative, int[] damage) {
         this.hp = hp;
         this.maxHp = hp;
         this.name = name;
@@ -21,8 +23,12 @@ public abstract class BaseHero implements IntrefaceGame {
         this.atk = atk;
         this.def = def;
         this.damage = damage;
+        this.initiative = initiative;
+        this.state = state;
     }
-
+    public void getDamage(int damage){
+        hp -= damage;
+    }
 
     protected BaseHero findClosesEnemy(ArrayList<BaseHero> enemyTeam){
         double distance = enemyTeam.size() * 2;
@@ -42,7 +48,12 @@ public abstract class BaseHero implements IntrefaceGame {
     public String getName() {
         return name;
     }
-
+    public int getInitiative(){
+        return initiative;
+}
+    public float getHp(){
+        return hp;
+    }
     public String getPosition() {
         return " x:" + Integer.toString(position.x) + " y:" + Integer.toString(position.y);
     }
@@ -62,5 +73,5 @@ public abstract class BaseHero implements IntrefaceGame {
     }
 
     @Override
-    public void step() {};
+    public void step(ArrayList<BaseHero> enemies,ArrayList<BaseHero> allies) {};
 }

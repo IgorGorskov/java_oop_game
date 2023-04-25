@@ -4,10 +4,10 @@ public class Monk extends BaseHero {
     int accuracy;
 
     public Monk(String name) {
-        super(8, name, new Position(1,2), 3, 2, new int[]{6, 12});
+        super(8, name,"stand", new Position(1,2), 3, 2 , 2,new int[]{6, 12});
     }
     public Monk(String name,Position position) {
-        super(8, name, position, 3, 2, new int[]{6, 12});
+        super(8, name,"stand", position, 3, 2,2, new int[]{6, 12});
     }
     public int meditation(){
         return 0;
