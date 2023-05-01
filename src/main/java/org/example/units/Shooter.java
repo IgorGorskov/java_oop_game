@@ -15,8 +15,9 @@ public abstract class Shooter extends BaseHero{
 
     @Override
     public void step(ArrayList<BaseHero> enemies, ArrayList<BaseHero> allies) {
+        if (notLive()){return;}
         BaseHero enemy;
-        if (hp > 0 && arrows > 0 && state == "stand"){
+        if (arrows > 0){
             enemy = findClosesEnemy(enemies);
         }
         else return;
@@ -30,7 +31,6 @@ public abstract class Shooter extends BaseHero{
             }
         }
         enemy.getDamage(this);
-
     }
 
 

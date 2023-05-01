@@ -1,5 +1,7 @@
 package org.example.units;
 
+import java.util.ArrayList;
+
 public class Villager extends BaseHero{
 
     int tonnage;
@@ -16,5 +18,11 @@ public class Villager extends BaseHero{
     @Override
     public String getInfo() {
         return "Villager";
+    }
+
+    @Override
+    public void step(ArrayList<BaseHero> enemies, ArrayList<BaseHero> allies) {
+        if (notLive()){return;}
+        state = "stand";
     }
 }

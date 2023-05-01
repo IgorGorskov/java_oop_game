@@ -43,7 +43,7 @@ public abstract class BaseHero implements IntrefaceGame {
         for (BaseHero enemy :
                 enemyTeam) {
             distance = Math.sqrt((Math.pow(enemy.position.x - this.position.x, 2) + Math.pow(enemy.position.y - this.position.y, 2)));
-            if (minDistance > distance) {
+            if (minDistance > distance && closeEnemy.notLive() != false) {
                 minDistance = distance;
                 closeEnemy = enemy;
             }
@@ -103,12 +103,14 @@ public abstract class BaseHero implements IntrefaceGame {
     protected void standBusy() {
         state = "busy";
     }
+    protected void standDie() {
+        state = "die";
+    }
 
     @Override
     public void step(ArrayList<BaseHero> enemies, ArrayList<BaseHero> allies) {
-    }
 
-    ;
+    };
 
     public static int rnd(int min, int max) {
         max -= min;
@@ -123,7 +125,15 @@ public abstract class BaseHero implements IntrefaceGame {
                 " A:" + atk +
                 " Dmg:" + Math.round(Math.abs((damage[0] + damage[1]) / 2)) +
                 " "
-                + this.getInfo() + " " + state;
+                + this.getInfo() + " " + state + " x: "
+                + position.x + " y: " + position.y;
 
+    }
+    protected boolean notLive(){
+        if (hp <= 0){
+            this.state = "die";
+            return true;
+        }
+        else {return false;}
     }
 }

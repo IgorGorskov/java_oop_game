@@ -16,8 +16,6 @@ public class Main {
     public static void main(String[] args) {
         darkTeam = createListHeroes(1);
         holyTeam = createListHeroes(10);
-        darkTeam.forEach(hero -> System.out.println(hero.getPosition() + hero.getInfo()));
-        holyTeam.forEach(hero -> System.out.println(hero.getPosition() + hero.getInfo()));
         System.out.println();
         Scanner input = new Scanner(System.in);
         while (true){
@@ -25,8 +23,8 @@ public class Main {
             View.view();  // отображение в консоль
             input.nextLine();
             for (BaseHero human: allTeam) {
-                if (holyTeam.contains(human)) human.step(holyTeam, darkTeam);
-                else human.step(darkTeam, holyTeam);
+                if (holyTeam.contains(human)) human.step(darkTeam, holyTeam);
+                else human.step(holyTeam,darkTeam);
             }
         }
     }
