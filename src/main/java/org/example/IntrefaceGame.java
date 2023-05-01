@@ -8,3 +8,4 @@ public interface IntrefaceGame {
     void step(ArrayList<BaseHero> enemies,ArrayList<BaseHero> allies);
     String getInfo();
 }
+

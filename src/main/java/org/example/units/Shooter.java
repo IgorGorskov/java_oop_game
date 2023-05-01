@@ -15,12 +15,24 @@ public abstract class Shooter extends BaseHero{
 
     @Override
     public void step(ArrayList<BaseHero> enemies, ArrayList<BaseHero> allies) {
-        super.step(enemies, allies);
+        BaseHero enemy;
         if (hp > 0 && arrows > 0 && state == "stand"){
-            findClosesEnemy(enemies);
+            enemy = findClosesEnemy(enemies);
         }
         else return;
+
+        for (BaseHero hero:
+                allies) {
+            if (hero.getInfo() == "Villager" && hero.getState() == "stand"){
+                arrows =+ 1;
+                hero.standBusy();
+                break;
+            }
+        }
+        enemy.getDamage(this);
+
     }
+
 
 
 }
