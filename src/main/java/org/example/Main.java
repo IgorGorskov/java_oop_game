@@ -14,8 +14,8 @@ public class Main {
     public static ArrayList<BaseHero> holyTeam = new ArrayList<>();
     public static ArrayList<BaseHero> allTeam = new ArrayList<>();
     public static void main(String[] args) {
-        darkTeam = createListHeroes(1);
-        holyTeam = createListHeroes(10);
+        darkTeam = createListHeroes(10);
+        holyTeam = createListHeroes(1);
         System.out.println();
         Scanner input = new Scanner(System.in);
         while (true){
@@ -24,14 +24,14 @@ public class Main {
             input.nextLine();
             for (BaseHero human: allTeam) {
                 if (holyTeam.contains(human)) human.step(darkTeam, holyTeam);
-                else human.step(holyTeam,darkTeam);
+                else human.step(holyTeam, darkTeam);
             }
         }
     }
 //    public static void main(String[] args) {
-//        ArrayList<BaseHero> firstTeamHeros = createListHeroes(0);
-//        firstTeamHeros = sortInitiativeHeroes(firstTeamHeros);
-//        firstTeamHeros.forEach(hero -> System.out.println(hero.getName() + hero.getPosition() + hero.getInfo() + hero.getHp()));
+//        ArrayList<BaseHero> firstTeamHeroes = createListHeroes(0);
+//        firstTeamHeroes = sortInitiativeHeroes(firstTeamHeroes);
+//        firstTeamHeroes.forEach(hero -> System.out.println(hero.getName() + hero.getPosition() + hero.getInfo() + hero.getHp()));
 //        System.out.println();
 //
 ////        ArrayList<BaseHero> secondTeamHeroes = createListHeroes(10);
@@ -40,10 +40,11 @@ public class Main {
 //    }
     public static ArrayList<BaseHero> createListHeroes(int y){
         ArrayList<BaseHero> randomHeroes= new ArrayList<>();
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < 10; i++) {
             String name = names.values()[new Random().nextInt(names.values().length)].toString();
             Position position = new Position(i + 1,y);
-            switch (new Random().nextInt(7)){
+
+           switch (new Random().nextInt(7)){//new Random().nextInt(7)
                 case 0:
                     randomHeroes.add(new Bandit(name,position));
                     break;
@@ -57,7 +58,7 @@ public class Main {
                     randomHeroes.add(new Lancer(name,position));
                     break;
                 case 4:
-                    randomHeroes.add(new Mage(name,position));
+                    randomHeroes.add(new Priest(name,position));
                     break;
                 case 5:
                     randomHeroes.add(new Monk(name,position));

@@ -1,7 +1,6 @@
 package org.example.units;
 
 import org.example.IntrefaceGame;
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -28,29 +27,38 @@ public abstract class BaseHero implements IntrefaceGame {
     }
 
     public void getDamage(BaseHero enemy) {
-        hp -= (enemy.getAtk() - def) * 0.05 * rnd(enemy.getDamage()[0], enemy.getDamage()[1]);
-
+        double damage = (enemy.getAtk() - def) * 0.05 * rnd(enemy.getDamage()[0], enemy.getDamage()[1]);
+        if (damage >= hp){
+            hp = 0;
+        }
+        else {
+            hp -= damage;
+        }
     }
 
     protected int[] getDamage() {
         return damage;
     }
 
-    protected BaseHero findClosesEnemy(ArrayList<BaseHero> enemyTeam) {
-        double distance = enemyTeam.size() * 2;
-        double minDistance = enemyTeam.size() * 2;
+    public BaseHero findClosesEnemy(ArrayList<BaseHero> enemyTeam) {
+        double distance;
+        double minDistance = 200;
         BaseHero closeEnemy = enemyTeam.get(0);
         for (BaseHero enemy :
                 enemyTeam) {
-            distance = Math.sqrt((Math.pow(enemy.position.x - this.position.x, 2) + Math.pow(enemy.position.y - this.position.y, 2)));
-            if (minDistance > distance && closeEnemy.notLive() != false) {
-                minDistance = distance;
-                closeEnemy = enemy;
+            distance = distanceTwoCharacter(enemy, this);
+            if (minDistance > distance) {
+                if(enemy.state != "die"){
+                    minDistance = distance;
+                    closeEnemy = enemy;
+                }
             }
         }
         return closeEnemy;
     }
-
+    protected double distanceTwoCharacter(BaseHero charOne, BaseHero charTwo){
+        return Math.sqrt((Math.pow(charOne.position.x - charTwo.position.x, 2) + Math.pow(charOne.position.y - charTwo.position.y, 2)));
+    }
     public String getName() {
         return name;
     }
@@ -126,7 +134,7 @@ public abstract class BaseHero implements IntrefaceGame {
                 " Dmg:" + Math.round(Math.abs((damage[0] + damage[1]) / 2)) +
                 " "
                 + this.getInfo() + " " + state + " x: "
-                + position.x + " y: " + position.y;
+                + this.position.x + " y: " + this.position.y;
 
     }
     protected boolean notLive(){

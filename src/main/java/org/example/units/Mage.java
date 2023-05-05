@@ -1,22 +1,27 @@
 package org.example.units;
 
-public class Mage extends BaseHero{
+import java.util.ArrayList;
 
-    public Mage(String name) {
-        super(6, name,"stand", new Position(1,2), 1, 1,2, new int[]{6, 12});
-    }
-    public Mage(String name,Position position) {
-        super(6, name,"stand", position, 1, 1,2, new int[]{6, 12});
-    }
-    public float castFireball(){
-        return 0;
-    }
-    public float castHeal(){
-        return 0;
+public abstract class Mage extends BaseHero{
+    int mana;
+
+    public Mage(float hp, String name,String state, Position position, int atk, int def,int initiative, int[] damage, int mana) {
+        super(hp, name, state, position, atk, def,initiative, damage);
+        this.mana = mana;
     }
 
-    @Override
-    public String getInfo() {
-        return "Mage";
+    public boolean castHeal(ArrayList<BaseHero> allies){
+
+        for (BaseHero hero:
+                allies) {
+            if (hero.hp < hero.maxHp - 10 && hero.getState() == "stand"){
+                mana -= 10;
+                hero.hp += 10;
+                return true;
+
+            }
+        }
+        return false;
     }
+
 }

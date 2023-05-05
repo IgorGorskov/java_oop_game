@@ -8,7 +8,7 @@ package org.example.units;
             super(8, name,"stand", new Position(0,0), 14, 3,3, new int[]{6, 12},6,65);
         }
         public Crossbowman(String name,Position position) {
-            super(8, name,"stand", position, 14, 3,3, new int[]{6, 12},6,65);
+            super(8, name,"stand", position, 2, 3,3, new int[]{6, 12},6,65);
         }
         public float strong_shoot(){
             return 0;

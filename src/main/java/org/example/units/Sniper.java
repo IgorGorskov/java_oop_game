@@ -9,7 +9,7 @@ public class Sniper extends Shooter {
         super(7, name,"stand", new Position(0,0), 12, 2,3, new int[]{6, 12},10,70);
     }
     public Sniper(String name, Position position) {
-        super(7, name,"stand", position, 12, 2,3, new int[]{6, 12},10,70);
+        super(7, name,"stand", position, 2, 2,3, new int[]{6, 12},10,70);
     }
     public float long_shoot(){
         return 0;
